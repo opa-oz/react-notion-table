@@ -18,6 +18,8 @@ script:
   - yarn build
   - yarn build:example
 
+after_success: yarn coverage
+
 deploy:
   provider: pages
   skip_cleanup: true

@@ -14,6 +14,7 @@
     "clean": "rm -rf dist .cache coverage",
     "lint": "eslint src/**/*.js",
     "test": "jest",
+    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:updateSnapshots": "jest --updateSnapshot",
     "release": "standard-version"
   },
@@ -37,6 +38,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.9.0",
+    "coveralls": "^3.0.6",
     "eslint": "^6.2.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.1.0",
