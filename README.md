@@ -3,6 +3,7 @@
 Notion-like table implementation for React
 
 [![Version](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/opa-oz/react-notion-table/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/opa-oz/react-notion-table.svg?branch=master)](https://travis-ci.com/opa-oz/react-notion-table)
 
 ### Copyright and license
 

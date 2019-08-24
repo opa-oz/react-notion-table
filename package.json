@@ -1,6 +1,6 @@
 {
   "name": "react-notion-table",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Notion-like table component implementation for React",
   "main": "dist/index.js",
   "repository": "https://github.com/opa-oz/react-notion-table.git",
@@ -10,9 +10,12 @@
   "scripts": {
     "start": "parcel example/index.html --open",
     "build": "parcel build src/index.js",
+    "build:example": "cp -R dist/ example/",
+    "clean": "rm -rf dist .cache coverage",
     "lint": "eslint src/**/*.js",
     "test": "jest",
-    "test:updateSnapshots": "jest --updateSnapshot"
+    "test:updateSnapshots": "jest --updateSnapshot",
+    "release": "standard-version"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -50,7 +53,8 @@
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
     "react-test-renderer": "^16.9.0",
-    "sass": "^1.22.10"
+    "sass": "^1.22.10",
+    "standard-version": "^7.0.0"
   },
   "husky": {
     "hooks": {

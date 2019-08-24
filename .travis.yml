@@ -1,0 +1,33 @@
+language: node_js
+os:
+  - linux
+cache:
+  yarn: true
+  npm: true
+  directories:
+    - node_modules
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn global add parcel-bundler
+
+script:
+  - yarn lint
+  - yarn test
+  - yarn build
+  - yarn build:example
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: ./example
+  on:
+    branch: gh-pages
+
+branches:
+  only:
+    - master
+    - gh-pages
