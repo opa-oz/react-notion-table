@@ -10,6 +10,8 @@
   "scripts": {
     "start": "parcel example/index.html --open",
     "build": "parcel build src/index.js",
+    "build:example": "cp -R dist/ example/",
+    "clean": "rm -rf dist .cache coverage",
     "lint": "eslint src/**/*.js",
     "test": "jest",
     "test:updateSnapshots": "jest --updateSnapshot"
