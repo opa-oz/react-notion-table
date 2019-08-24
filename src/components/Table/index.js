@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './styles.scss';
 
 const Table = (props) => {
-	const { className = null } = props;
+	const { className } = props;
 
 	return (
 		<div

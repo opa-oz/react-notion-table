@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#Table should render properly 1`] = `
+<div
+  className="Table"
+>
+  Table will be here or NOT?
+</div>
+`;
+
+exports[`#Table should render with additional class 1`] = `
+<div
+  className="Table AdditionalClass"
+>
+  Table will be here or NOT?
+</div>
+`;
