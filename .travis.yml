@@ -7,20 +7,34 @@ cache:
   directories:
     - node_modules
 
+branches:
+  only:
+    - master
+    - feature/npm-deploy
+
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn global add parcel-bundler
 
-script:
-  - yarn lint
-  - yarn test
-  - yarn build
-  - yarn build:example
-
-after_success: yarn coverage
-
-branches:
-  only:
-    - master
-    - gh-pages
+jobs:
+  include:
+    - stage: GitHub Release
+      script:
+        - yarn lint
+        - yarn build
+        - yarn build:example
+        - echo "Deploying to GitHub & Npm ..."
+      deploy:
+        - provider: releases
+          api_key: '$GITHUB_TOKEN'
+          skip_cleanup: true
+          on:
+            tags: true
+        - provider: npm
+          email: '$NPM_EMAIL'
+          api_key: '$NPM_TOKEN'
+          on: master
+    - stage: Tests & Coverage
+      script:
+        - yarn coverage
