@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/opa-oz/react-notion-table/compare/v0.1.4...v0.1.5) (2019-08-25)
+
+
+### Features
+
+* **configuration:** added .versionrc.js ([abd9833](https://github.com/opa-oz/react-notion-table/commit/abd9833))
+
 ### 0.1.4 (2019-08-24)
 
 ### 0.1.3 (2019-08-24)
