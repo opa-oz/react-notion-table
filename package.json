@@ -1,6 +1,6 @@
 {
   "name": "react-notion-table",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Notion-like table component implementation for React",
   "main": "dist/index.js",
   "repository": "https://github.com/opa-oz/react-notion-table.git",
