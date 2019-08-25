@@ -20,7 +20,26 @@ script:
 
 after_success: yarn coverage
 
+jobs:
+  include:
+    - stage: GitHub Release
+      script: echo "Deploying to GitHub releases ..."
+      deploy:
+        provider: releases
+        api_key: '$GITHUB_TOKEN'
+        skip_cleanup: true
+        on:
+          tags: true
+    - stage: npm release
+      node_js: '11.10.1'
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        email: '$NPM_EMAIL'
+        api_key: '$NPM_TOKEN'
+        on: master
+
 branches:
   only:
     - master
-    - gh-pages
+    - feature/npm-deploy
