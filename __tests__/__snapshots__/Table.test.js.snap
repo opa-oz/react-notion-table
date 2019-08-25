@@ -1,17 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`#Table should add row to table 1`] = `
+<div
+  className="TableContainer AdditionalClass"
+>
+  <div
+    className="Table"
+  >
+    <div
+      className="Row Header"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <div
+      className="Row"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <button
+      id="insertRow"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Row
+    </button>
+    <button
+      id="insertColumn"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Column
+    </button>
+  </div>
+</div>
+`;
+
 exports[`#Table should render properly 1`] = `
 <div
-  className="Table"
+  className="TableContainer"
 >
-  Table will be here or NOT?
+  <div
+    className="Table"
+  >
+    <div
+      className="Row Header"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <div
+      className="Row"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <button
+      id="insertRow"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Row
+    </button>
+    <button
+      id="insertColumn"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Column
+    </button>
+  </div>
 </div>
 `;
 
 exports[`#Table should render with additional class 1`] = `
 <div
-  className="Table AdditionalClass"
+  className="TableContainer AdditionalClass"
 >
-  Table will be here or NOT?
+  <div
+    className="Table"
+  >
+    <div
+      className="Row Header"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <div
+      className="Row"
+    >
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+      <div
+        className="Cell"
+      >
+        Cell
+      </div>
+    </div>
+    <button
+      id="insertRow"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Row
+    </button>
+    <button
+      id="insertColumn"
+      onClick={[Function]}
+      type="button"
+    >
+      Insert Column
+    </button>
+  </div>
 </div>
 `;

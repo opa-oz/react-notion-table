@@ -44,11 +44,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "immutable": "^4.0.0-rc.12",
     "jest-css-modules": "^2.1.0",
     "jest-transform-stub": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
