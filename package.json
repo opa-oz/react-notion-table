@@ -18,6 +18,13 @@
     "test:updateSnapshots": "jest --updateSnapshot",
     "release": "standard-version"
   },
+  "keywords": [
+    "react",
+    "table",
+    "component",
+    "editable",
+    "notion"
+  ],
   "lint-staged": {
     "*.{js,jsx}": [
       "pretty-quick --staged",

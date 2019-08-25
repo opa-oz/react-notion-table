@@ -64,6 +64,4 @@ typings/
 # Parcel's cache
 .cache
 
-# Dist directory
-dist
 .DS_Store
