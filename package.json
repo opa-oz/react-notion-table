@@ -18,6 +18,16 @@
     "test:updateSnapshots": "jest --updateSnapshot",
     "release": "standard-version"
   },
+  "contributors": [
+    "Contributors (https://github.com/opa-oz/react-notion-table/graphs/contributors)"
+  ],
+  "files": [
+    "package.json",
+    "dist/*"
+  ],
+  "bugs": {
+    "url": "https://github.com/opa-oz/react-notion-table/issues"
+  },
   "keywords": [
     "react",
     "table",

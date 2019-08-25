@@ -6,6 +6,8 @@ Notion-like table implementation for React
 [![Build Status](https://travis-ci.com/opa-oz/react-notion-table.svg?branch=master)](https://travis-ci.com/opa-oz/react-notion-table)
 [![Coverage Status](https://coveralls.io/repos/github/opa-oz/react-notion-table/badge.svg?branch=feature/coveralls)](https://coveralls.io/github/opa-oz/react-notion-table?branch=feature/coveralls)
 
+[![NPM](https://nodei.co/npm/react-notion-table.png?downloads=true&downloadRank=true)](https://www.npmjs.com/package/react-notion-table)
+
 ### Copyright and license
 
 Code and documentation copyright 2019 **opa_oz**.
