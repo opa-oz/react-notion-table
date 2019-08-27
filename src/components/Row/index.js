@@ -1,22 +1,35 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import { ThemeProvider } from 'emotion-theming';
 
-import styles from './styles.scss';
+const RowContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	box-sizing: border-box;
+
+	min-height: ${(props) => props.theme.minRowHeight};
+	border: ${(props) => props.theme.borderSize} solid
+		${(props) => props.theme.borderColor};
+	font-weight: ${(props) => (props.isHeader ? 'bold' : 'normal')};
+
+	border-right: 0;
+	border-left: 0;
+	border-bottom: 0;
+
+	:last-child {
+		border-bottom: ${(props) => props.theme.borderSize} solid
+			${(props) => props.theme.borderColor};
+	}
+`;
 
 const Row = (props) => {
-	const { className, isHeader = false, children } = props;
+	const { isHeader = false, children } = props;
 
 	return (
-		<div
-			className={classNames({
-				[styles.Row]: true,
-				[styles.Header]: isHeader,
-				[className]: !!className,
-			})}
-		>
-			{children}
-		</div>
+		<ThemeProvider theme={(theme = {}) => theme.row}>
+			<RowContainer isHeader={isHeader}>{children}</RowContainer>
+		</ThemeProvider>
 	);
 };
 
@@ -25,13 +38,11 @@ Row.propTypes = {
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
 	]),
-	className: PropTypes.string,
 	isHeader: PropTypes.bool,
 };
 
 Row.defaultProps = {
 	children: null,
-	className: null,
 	isHeader: false,
 };
 

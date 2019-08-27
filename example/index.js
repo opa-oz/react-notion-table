@@ -7,12 +7,19 @@ ReactDOM.render(
 	<div
 		style={{
 			width: 600,
-			border: '1px solid purple',
 			display: 'flex',
+			flexDirection: 'column',
 			margin: '0 auto',
 		}}
 	>
-		<Table />
+		<>
+			<h1>Editable table</h1>
+			<Table isEditable />
+			<br />
+			<h1>Read-only table</h1>
+			<br />
+			<Table />
+		</>
 	</div>,
 	document.getElementById('root'),
 );
