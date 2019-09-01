@@ -3,10 +3,8 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 
 const CellContainer = styled.div`
-	display: flex;
-	flex-direction: column;
+	display: table-cell;
 	box-sizing: border-box;
-	width: 50%;
 
 	border-right: ${(props) => props.theme.borderSize} solid
 		${(props) => props.theme.borderColor};

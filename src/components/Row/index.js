@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 
 const RowContainer = styled.div`
-	display: flex;
-	flex-direction: row;
+	display: table-row;
 	box-sizing: border-box;
 
 	min-height: ${(props) => props.theme.minRowHeight};

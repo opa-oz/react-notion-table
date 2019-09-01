@@ -17,14 +17,12 @@ const TableContainer = styled.div`
 	width: 100%;
 	overflow: auto;
 	position: relative;
-
-	padding-bottom: ${(props) => (props.isEditable ? props.theme.buttons.rowHeight : 0)};
-	padding-right: ${(props) => (props.isEditable ? props.theme.buttons.colWidth : 0)};
 `;
 
 const TableBlock = styled.div`
-	display: flex;
-	flex-direction: column;
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
 `;
 
 const InsertRowButton = styled.div`
@@ -57,6 +55,16 @@ const InsertColumnButton = styled(InsertRowButton)`
 	height: auto;
 
 	width: ${(props) => props.theme.buttons.colWidth};
+`;
+
+const ButtonsContainer = styled(TableContainer)`
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+
+	margin-right: -${(props) => (props.isEditable ? props.theme.buttons.colWidth : 0)};
+	padding-bottom: ${(props) => (props.isEditable ? props.theme.buttons.rowHeight : 0)};
+	padding-right: ${(props) => (props.isEditable ? props.theme.buttons.colWidth : 0)};
 `;
 
 const PlusIcon = styled(MdAdd)`
@@ -109,8 +117,10 @@ const Table = (props) => {
 
 	return (
 		<ThemeProvider theme={theme}>
-			<TableContainer isEditable={isEditable}>
-				<TableBlock>{rows.map(makeRow)}</TableBlock>
+			<ButtonsContainer isEditable={isEditable}>
+				<TableContainer>
+					<TableBlock>{rows.map(makeRow)}</TableBlock>
+				</TableContainer>
 				{isEditable ? (
 					<>
 						<InsertRowButton onClick={() => handleInsertRow()}>
@@ -121,7 +131,7 @@ const Table = (props) => {
 						</InsertColumnButton>
 					</>
 				) : null}
-			</TableContainer>
+			</ButtonsContainer>
 		</ThemeProvider>
 	);
 };
