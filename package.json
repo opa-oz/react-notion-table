@@ -54,6 +54,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-draggable": "^3.3.2",
     "react-icons": "^3.7.0",
     "shortid": "^2.2.14"
   },

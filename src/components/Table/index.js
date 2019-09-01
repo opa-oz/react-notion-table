@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import { MdAdd } from 'react-icons/md';
+import Draggable from 'react-draggable';
 
 import Cell from '../Cell';
 import Row from '../Row';
 
+import { createTable, insertRow, insertColumn } from '../../utils/actions';
+
 import defaultTheme from '../theme/default-theme';
 
-import { createTable, insertRow, insertColumn } from '../../utils/actions';
+const DEFAULT_STICK_HOVER = -1;
 
 const TableContainer = styled.div`
 	display: flex;
@@ -81,6 +84,23 @@ const PlusIcon = styled(MdAdd)`
 	}
 `;
 
+const ResizeStick = styled.div`
+	display: block;
+	position: absolute;
+	width: 2px;
+	top: -1px;
+	bottom: -1px;
+	right: -1.5px;
+	left: auto;
+	cursor: col-resize;
+	z-index: 100;
+	transform: none !important;
+	border: 2px solid transparent;
+
+	box-shadow: inset 2px 0
+		${(props) => (props.hover ? props.theme.resizeStick.color : 'transparent')};
+`;
+
 const DEFAULT_SIZES = { cols: 3, rows: 2 };
 const DEFAULT_TABLE = createTable(DEFAULT_SIZES);
 
@@ -88,6 +108,14 @@ const Table = (props) => {
 	const { theme, isEditable = false } = props;
 	const [sizes, setSizes] = useState(DEFAULT_SIZES);
 	const [tableData, setTableData] = useState(DEFAULT_TABLE);
+	const [customCellWidthes, setCustomCellWidthes] = useState(
+		Array(DEFAULT_SIZES.cols).fill(),
+	);
+	const [hoverStickIndex, setHoverableStickIndex] = useState(
+		DEFAULT_STICK_HOVER,
+	);
+
+	const rows = tableData.get('rows');
 
 	const handleInsertRow = (index) => {
 		setTableData(insertRow(tableData, index));
@@ -99,6 +127,20 @@ const Table = (props) => {
 		setSizes({ ...sizes, cols: sizes.cols + 1 });
 	};
 
+	const handleDrag = (index, ui) => {
+		const { deltaX, node } = ui;
+		const { width } = window.getComputedStyle(node.parentElement);
+		const { minWidth: _minWidth } = window.getComputedStyle(node.parentElement);
+		const minWidth = parseInt(_minWidth, 10);
+
+		const newWidth = parseInt(width, 10) + deltaX;
+		const newMaxWidth = newWidth < minWidth ? minWidth : newWidth;
+
+		setCustomCellWidthes(
+			customCellWidthes.map((v, k) => (k === index ? `${newMaxWidth}px` : v)),
+		);
+	};
+
 	const makeRow = (row) => {
 		const $index = row.get('$index');
 		const isHeader = row.get('isHeader');
@@ -106,14 +148,26 @@ const Table = (props) => {
 
 		return (
 			<Row isHeader={isHeader} key={$index}>
-				{cells.map((cell) => (
-					<Cell data={cell} key={cell.get('$index')} />
+				{cells.map((cell, k) => (
+					<Cell
+						data={cell}
+						key={cell.get('$index')}
+						maxWidth={customCellWidthes[k]}
+					>
+						<Draggable axis="x" onDrag={(_, ui) => handleDrag(k, ui)}>
+							<ResizeStick
+								hover={hoverStickIndex === k}
+								onMouseOver={() => setHoverableStickIndex(k)}
+								onMouseLeave={() => setHoverableStickIndex(DEFAULT_STICK_HOVER)}
+								onFocus={() => setHoverableStickIndex(k)}
+								onBlur={() => setHoverableStickIndex(DEFAULT_STICK_HOVER)}
+							/>
+						</Draggable>
+					</Cell>
 				))}
 			</Row>
 		);
 	};
-
-	const rows = tableData.get('rows');
 
 	return (
 		<ThemeProvider theme={theme}>

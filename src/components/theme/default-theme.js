@@ -19,6 +19,10 @@ export default {
 			borderSize: '1px',
 			cellPadding: '5px',
 			minCellWidth: '50px',
+
+			resizeStick: {
+				color: '#bdf4ff',
+			},
 		},
 	},
 };
